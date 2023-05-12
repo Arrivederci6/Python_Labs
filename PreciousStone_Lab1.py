@@ -14,16 +14,16 @@ class PreciousStone:
         return self.clarity
 
     def increase_price_by_percentage(self, percentage):
-        increased_price = self.clarity * (percentage / 100)
-        return increased_price
+        return self.clarity * (percentage / 100)
+        
 
 new_stone = PreciousStone('Emeraldo', 10, 'Green', 50, 5)
 
 total_price = new_stone.get_total_price()
-print("The total price is:", total_price)
+print(f"The total price is:{total_price}")
 
 increased_clarity = new_stone.increase_clarity_by_one()
-print("The increased clarity is:", increased_clarity)
+print(f"The increased clarity is: {increased_clarity}")
 
 increased_price = new_stone.increase_price_by_percentage(10)
-print("The increased price is:", increased_price)
+print(f"The increased price is:{increased_price}")
