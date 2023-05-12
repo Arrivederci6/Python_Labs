@@ -51,7 +51,7 @@ class PreciousStone:
 
     def __str__(self):
         """Overriding the __str___ method to get the full string of objects that we have made"""
-        print(f"Name: {self.__name}, Clarity: {self.__clarity}, Color: {self.__color}, Clarity: {self.__clarity}, Price per carat: {self.__price_per_carat}\n")
+        print(f"Name: {self.__name}, Carat: {self.__carat}, Color: {self.__color}, Clarity: {self.__clarity}, Price per carat: {self.__price_per_carat}\n")
     
     def get_total_price(self):
         """Function from wich we are getting the full price by multiplying carat by price per carat"""
@@ -66,7 +66,18 @@ class PreciousStone:
         """The function in wich we are getting an increased price by n-th amount of percents"""
         return self.__clarity * (percentage / 100)
     
+try:
+    """Throwing a custom exception if stone`s carat amount is lower than 0 (zero)"""
+    new_stone = PreciousStone('Emeraldo', -10, 'Green', 50, 5)
+    if(new_stone.carat < 0):
+        raise Exception("Carat amount cannot be lower than 0")
+    else:
+        new_stone.__str__()
+        print(new_stone.get_total_price(), new_stone.increase_clarity_by_one(), new_stone.increase_price_by_percentage(10))
 
-new_stone = PreciousStone('Emeraldo', 10, 'Green', 50, 5)
-new_stone.__str__()
-print(new_stone.get_total_price(), new_stone.increase_clarity_by_one(), new_stone.increase_price_by_percentage(10))
+except Exception as e:
+    if str(e) == "Carat amount cannot be lower than 0":
+        print("Set an appropriate ammount for carat`s parametr")
+    else:
+        new_stone.__str__()
+        print(new_stone.get_total_price(), new_stone.increase_clarity_by_one(), new_stone.increase_price_by_percentage(10))
