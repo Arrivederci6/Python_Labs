@@ -44,4 +44,3 @@ if __name__ == "__main__":
     stones_with_matching_colors = stone_manager.find_stones_by_color("blue")
     for _ in stones_with_matching_colors:
         print(str(_))
-
