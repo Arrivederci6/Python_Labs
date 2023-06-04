@@ -20,6 +20,7 @@ Methods:
 """
 
 from models.stone import Stone
+from exceptions.invalid_weight_exception import InvalidWeightException
 
 
 class ArtificialPreciousStone(Stone):
@@ -55,8 +56,14 @@ class ArtificialPreciousStone(Stone):
     def get_full_price(self):
         """
         Calculates and returns the full price of the precious stone.
+        If the weight is <= 0 - raises an exception
 
         Returns:
             int: The full price of the precious stone.
+            OR
+            InvalidWeightException(raise): If the weight is <= 0 .
         """
+        if self.weight_in_grams <= 0:
+            exception_message = "Weight must be greater than 0!"
+            raise InvalidWeightException(exception_message)
         return self.price_per_gram * self.weight_in_grams
