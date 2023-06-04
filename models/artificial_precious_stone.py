@@ -1,24 +1,62 @@
+"""
+Module: artificial_precious_stone.py
+
+This module defines the ArtificialPreciousStone class, which represents
+an artificial precious stone object.
+
+Attributes:
+- name (str): The name of the stone.
+- color (str): The color of the stone.
+- laboratory_name (str): The laboratory name in which the stone was created.
+- price_per_gram (int): The price per gram of the stone.
+- weight_in_grams (int): The weight of the stone in grams.
+
+Methods:
+- __str__(self):
+    Returns a string representation of the `ArtificialPreciousStone` object.
+
+- get_full_price(self):
+    Calculates and returns the full price of the artificial precious stone.
+"""
+
 from models.stone import Stone
 
 
 class ArtificialPreciousStone(Stone):
+    """
+    This class represents an ArtificialPreciousStone.
+    It defines common properties and methods.
+    """
     def __init__(self, name=0, color=0, laboratory_name=0, price_per_gram=0, weight_in_grams=0):
-        """Calling the parental constructor"""
+        """
+        Initializes an ArtificialPreciousStone object with the specified attributes.
+
+        Args:
+            name (str): The name of the stone.
+            color (str): The color of the stone.
+            laboratory_name (str): The laboratory name where the stone was created.
+            price_per_gram (int): The price per gram of the stone.
+            weight_in_grams (int): The weight of the stone in grams.
+        """
         super().__init__(name, color, price_per_gram, weight_in_grams)
-        """Args:
-            name: name of the stone.
-            color: color of the stone.
-            laboratory_name: laboratory name where stone was created.
-            price_per_gram: stone`s price per gram.
-            weight_in_grams: stone`s weight in gram."""
         self.laboratory_name = laboratory_name
 
     def __str__(self):
-        """Overriding the __str___ method to get the full string of objects that we have made"""
-        return f"name: {self.name}, color: {self.color}, laboratory name: {self.laboratory_name}, " \
-               f"weight in grams: {self.weight_in_grams}, price per gram: {self.price_per_gram}, " \
+        """
+        Returns a string representation of the `ArtificialPreciousStone` object.
+
+        Returns:
+            str: A string representation of the `ArtificialPreciousStone` object.
+        """
+        return f"name: {self.name}, color: {self.color}, laboratory name: {self.laboratory_name}, "\
+               f"weight in grams: {self.weight_in_grams}, price per gram: {self.price_per_gram}, "\
                f"price per gram: {self.price_per_gram}, weight in grams: {self.weight_in_grams}"
 
     def get_full_price(self):
-        """Function from which we are getting the full price by multiplying price per gram by weight in grams"""
+        """
+        Calculates and returns the full price of the precious stone.
+
+        Returns:
+            int: The full price of the precious stone.
+        """
         return self.price_per_gram * self.weight_in_grams
