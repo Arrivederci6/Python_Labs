@@ -17,6 +17,7 @@ from models.gemstone import GemStone
 from models.fossil_stone import FossilStone
 from models.precious_stone import PreciousStone
 from models.artificial_precious_stone import ArtificialPreciousStone
+from decorators.logging_to_file import logging_to_file
 
 
 class StoneManager:
@@ -72,7 +73,7 @@ class StoneManager:
         if self.current_position < len(self.stones):
             current_stone = self.current_position
             self.current_position += 1
-            return current_stone
+            return self.stones[current_stone]
         else:
             raise StopIteration
 
@@ -158,6 +159,9 @@ if __name__ == "__main__":
             print(stone)
         except StopIteration:
             break
+    # print("all stones:")
+    # for stone in stones:
+    #     print(stone)
 
     print("\nEnumerate usage:")
     for index, stone in enumerate(stones):
@@ -166,3 +170,15 @@ if __name__ == "__main__":
     print("\nZip usage:")
     for stone, full_price in zip(stones, stones_full_price_list):
         print(f"Stone: {stone}, Full price: {full_price}")
+
+    print("\nDictionary usage:")
+    dictionary_of_stones_with_chosen_type_params = [{key: value for key, value in stone.__dict__.items()
+                                                     if isinstance(value, str)} for stone in stones]
+    print(dictionary_of_stones_with_chosen_type_params)
+
+    @logging_to_file
+    def exception_example():
+        exception_causing_stone = ArtificialPreciousStone('error stone', 'white', 'lnu', 10, 0)
+        print(exception_causing_stone.get_full_price())
+
+    exception_example()
