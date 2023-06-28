@@ -10,8 +10,8 @@ class PreciousStone:
         self.__clarity = clarity
         self.__price_per_carat = price_per_carat
     
-    def get_instance():
-        if PreciousStone.instance == None:
+    def get_instance(self):
+        if PreciousStone.instance is None:
             PreciousStone.instance = PreciousStone()
 
         return PreciousStone.instance
