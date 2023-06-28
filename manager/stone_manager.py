@@ -166,3 +166,9 @@ if __name__ == "__main__":
     print("\nZip usage:")
     for stone, full_price in zip(stones, stones_full_price_list):
         print(f"Stone: {stone}, Full price: {full_price}")
+        
+    print("\nDictionary usage:")
+    dictionary_of_stones_with_chosen_type_params = [{key: value for key, value in stone.dict.items()
+                                                     if isinstance(value, str)} for stone in stones]
+    print(dictionary_of_stones_with_chosen_type_params)
+    
